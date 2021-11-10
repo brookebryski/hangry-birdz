@@ -1,5 +1,5 @@
 package com.example.hangrybirdz;
 
-public interface IXLandingPosition {
+public interface IYLandingPosition {
     int Find(double angleInRadians, int velocity);
 }

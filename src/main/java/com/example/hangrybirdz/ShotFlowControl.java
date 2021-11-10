@@ -34,18 +34,18 @@ public class ShotFlowControl implements IShotFlowControl {
 
 
     public boolean run(){
-        String angle = _angleGetter.GetAngle();
+        String angle = _angleGetter.getInput();
         _angleIntegerValidator.IsInteger(angle);
         int aInput = Integer.parseInt(angle);
         _angleRangeValidator.isInRange(aInput);
-        String velocity = _velocityGetter.GetVelocity();
+        String velocity = _velocityGetter.getInput();
         _velocityIntegerValidator.isInteger(velocity);
         int vInput = Integer.parseInt(velocity);
         _velocityRangeValidator.isInRange(vInput);
         double rInput = _angleConverter.Convert(aInput);
         _xLandingPosition.Find(rInput,vInput);
         _yLandingPosition.Find(rInput,vInput);
-        _hitOrMiss.IsAHit(_targetCoordinates, aInput, vInput);
+//        _hitOrMiss.IsAHit(_targetCoordinates, aInput, vInput);
         return false;
     }
 }

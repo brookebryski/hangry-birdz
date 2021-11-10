@@ -1,2 +1,5 @@
-package com.example.hangrybirdz;public interface IYLandingPosition {
+package com.example.hangrybirdz;
+
+public interface IYLandingPosition {
+    double Find(double angleInRadians, double velocity);
 }

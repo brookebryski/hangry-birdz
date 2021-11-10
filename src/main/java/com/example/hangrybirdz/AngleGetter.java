@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class AngleGetter {
+package com.example.hangrybirdz;
+
+public class AngleGetter implements IAngleGetter {
+    public String GetAngle() {
+        return null;
+    }
 }

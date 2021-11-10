@@ -1,2 +1,5 @@
-package com.example.hangrybirdz;public interface IAngleGetter {
+package com.example.hangrybirdz;
+
+public interface IAngleGetter {
+    String GetAngle();
 }

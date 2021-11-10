@@ -11,7 +11,7 @@ public class YLandingPositionTests {
         // Given: I am a user
         IYLandingPosition ylp = new YLandingPosition();
         // When: I enter angle 1 velocity 1
-        double input = ylp.Find(.017453, 1);
+        int input = ylp.Find(.017453, 1);
         //Then: I get back 1
         assertEquals(1, input);
     }
@@ -22,7 +22,7 @@ public class YLandingPositionTests {
         // Given: I am a user
         IYLandingPosition ylp = new YLandingPosition();
         // When: I enter angle 1 velocity 20
-        double input = ylp.Find(.017453, 20);
+        int input = ylp.Find(.017453, 20);
         //Then: I get back 1
         assertEquals(1, input);
     }
@@ -34,7 +34,7 @@ public class YLandingPositionTests {
         // Given: I am a user
         IYLandingPosition ylp = new YLandingPosition();
         // When: I enter angle 90 velocity 1
-        double input = ylp.Find(1.5707, 1);
+        int input = ylp.Find(1.5707, 1);
         //Then: I get back 1
         assertEquals(1, input);
     }
@@ -44,7 +44,7 @@ public class YLandingPositionTests {
         // Given: I am a user
         IYLandingPosition ylp = new YLandingPosition();
         // When: I enter angle 90 velocity 20
-        double input = ylp.Find(1.5707, 20);
+        int input = ylp.Find(1.5707, 20);
         //Then: I get back 20
         assertEquals(20, input);
     }

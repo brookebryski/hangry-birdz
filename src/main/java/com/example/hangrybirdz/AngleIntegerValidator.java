@@ -1,7 +1,6 @@
 package com.example.hangrybirdz;
 
 public class AngleIntegerValidator implements IAngleIntegerValidator {
-
     public boolean IsInteger(String angle) {
         try {
             Integer.parseInt(angle);
@@ -11,5 +10,4 @@ public class AngleIntegerValidator implements IAngleIntegerValidator {
         }
     }
 }
-
 

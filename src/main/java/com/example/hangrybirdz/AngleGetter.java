@@ -4,7 +4,15 @@ import java.util.Scanner;
 
 public class AngleGetter implements IAngleGetter {
 
-    public String GetAngle () {
+    private IAngleGetter angleGetter;
+    private IHitOrMiss hitOrMiss;
+
+    public AngleGetter(IAngleGetter angleGetter) {
+        this.angleGetter = angleGetter;
+    }
+
+
+    public String getInput() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }

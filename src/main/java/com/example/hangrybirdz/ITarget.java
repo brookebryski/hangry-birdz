@@ -1,7 +1,8 @@
 package com.example.hangrybirdz;
 
 public interface ITarget {
-
-    String Generate();
+    int getxCoordinate();
+    int getyCoordinate();
+    void Set();
 
 }

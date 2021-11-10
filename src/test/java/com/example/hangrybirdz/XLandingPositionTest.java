@@ -1,5 +1,6 @@
 package com.example.hangrybirdz;
 
+
 import org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +50,7 @@ public class XLandingPositionTest {
 //      Then: Get back 1
         assertEquals(1, result);
     }
+
 
 
 }

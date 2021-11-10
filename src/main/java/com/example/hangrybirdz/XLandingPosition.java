@@ -1,5 +1,6 @@
 package com.example.hangrybirdz;
 
+
 public class XLandingPosition implements IXLandingPosition{
 
     @Override
@@ -10,6 +11,5 @@ public class XLandingPosition implements IXLandingPosition{
         if (xCoordinate <1){
             return 1;
         } else return xCoordinate;
-
     }
 }

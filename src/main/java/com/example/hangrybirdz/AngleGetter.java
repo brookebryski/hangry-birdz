@@ -4,15 +4,12 @@ import java.util.Scanner;
 
 public class AngleGetter implements IAngleGetter {
 
-    private IAngleGetter angleGetter;
-    private IHitOrMiss hitOrMiss;
 
-    public AngleGetter(IAngleGetter angleGetter) {
-        this.angleGetter = angleGetter;
-    }
+
 
 
     public String getInput() {
+        System.out.println("Please enter an angle between 1 and 90");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }

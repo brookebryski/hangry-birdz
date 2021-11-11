@@ -30,7 +30,6 @@ public class AngleHandler implements IAngleHandler{
         if (_angleIntegerValidator.IsInteger(input)) {
             _angle = Integer.parseInt(input);
             if (_angleRangeValidator.isInRange(_angle)) {
-                System.out.println("range validator is true");
                 return true;
             } return false;
         } return false;

@@ -21,10 +21,7 @@ public class AngleHandlerTest {
     private IAngleGetter angleGetter;
     private IAngleIntegerValidator angleIntegerValidator;
     private IAngleRangeValidator angleRangeValidator;
-
     private IAngleHandler angleHandler;
-
-
 
 
     @BeforeEach
@@ -64,18 +61,15 @@ public class AngleHandlerTest {
         verify(angleRangeValidator,times(1)).isInRange(1);
     }
 
-    @Test
-    public void givenBobTimeout() {
-        when(angleGetter.getInput()).thenReturn("Bob");
-        when(angleIntegerValidator.IsInteger("Bob")).thenReturn(false);
-//        angleHandler.getAngle();
+//    @Test
+//    public void givenBobLoopUntilTimeout() {
+//        when(angleGetter.getInput()).thenReturn("Bob");
+//        when(angleIntegerValidator.IsInteger("Bob")).thenReturn(false);
 //        Instant start = Instant.now();
 //        Instant end = Instant.now();
 //        Duration timeout = Duration.between(start, end);
 //        timeout.plusSeconds(2);
-//        Timeout()
 //        assertTimeoutPreemptively(timeout, () -> angleHandler.getAngle() );
-////        verify(angleIntegerValidator,times(1)).IsInteger("bob");
-        verify(angleHandler, timeout(1000)).getAngle();
-    }
+//
+//    }
 }

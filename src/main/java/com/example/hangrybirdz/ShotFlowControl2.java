@@ -5,7 +5,6 @@ public class ShotFlowControl2 implements IShotFlowControl2 {
     private IAngleHandler _angleHandler;
     private IVelocityHandler _velocityHandler;
     private ILandingPosition landingPosition;
-
     private IHitOrMiss hitOrMiss;
     private ITarget target;
 

@@ -53,18 +53,18 @@ public class VelocityHandlerTest {
         verify(velocityRangeValidator,times(1)).isInRange(1);
     }
 
-    @Test
-    public void givenBobTimeout() {
-        when(velocityGetter.getInput()).thenReturn("Bob");
-        when(velocityIntegerValidator.isInteger("Bob")).thenReturn(false);
-//        VelocityHandler.getVelocity();
-//        Instant start = Instant.now();
-//        Instant end = Instant.now();
-//        Duration timeout = Duration.between(start, end);
-//        timeout.plusSeconds(2);
-//        Timeout()
-//        assertTimeoutPreemptively(timeout, () -> VelocityHandler.getVelocity() );
-////        verify(VelocityIntegerValidator,times(1)).isInteger("bob");
-        verify(velocityHandler, timeout(1000)).getVelocity();
-    }
+//    @Test
+//    public void givenBobTimeout() {
+//        when(velocityGetter.getInput()).thenReturn("Bob");
+//        when(velocityIntegerValidator.isInteger("Bob")).thenReturn(false);
+////        VelocityHandler.getVelocity();
+////        Instant start = Instant.now();
+////        Instant end = Instant.now();
+////        Duration timeout = Duration.between(start, end);
+////        timeout.plusSeconds(2);
+////        Timeout()
+////        assertTimeoutPreemptively(timeout, () -> VelocityHandler.getVelocity() );
+//////        verify(VelocityIntegerValidator,times(1)).isInteger("bob");
+//        verify(velocityHandler, timeout(1000)).getVelocity();
+//    }
 }

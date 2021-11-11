@@ -21,6 +21,8 @@ public class ShotFlowControl2 implements IShotFlowControl2 {
         int angle = _angleHandler.getAngle();
         int velocity = _velocityHandler.getVelocity();
         landingPosition.set(angle,velocity);
+        System.out.println("Target is at X " + target.getxCoordinate() + " , Y " + target.getyCoordinate());
+        System.out.println("You landed at X " + landingPosition.getxCoordinate() + " , Y " + landingPosition.getyCoordinate());
         return hitOrMiss.IsAHit(target,landingPosition);
     }
 }

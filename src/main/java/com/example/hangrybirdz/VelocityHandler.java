@@ -20,7 +20,7 @@ public class VelocityHandler implements IVelocityHandler{
     public int getVelocity() {
         String input = _velocityGetter.getInput();
         while (!isValid(input)) {
-            System.out.println("Please make sure to enter a valid number, i.e. an integer between 1 and 90");
+            System.out.println("Please make sure to enter a valid number, i.e. an integer between 1 and 20");
             input = _velocityGetter.getInput();
         }
         return _velocity;
@@ -30,7 +30,6 @@ public class VelocityHandler implements IVelocityHandler{
         if (_velocityIntegerValidator.isInteger(input)) {
             _velocity = Integer.parseInt(input);
             if (_velocityRangeValidator.isInRange(_velocity)) {
-                System.out.println("range validator is true");
                 return true;
             } return false;
         } return false;

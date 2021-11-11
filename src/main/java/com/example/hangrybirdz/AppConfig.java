@@ -81,10 +81,18 @@ public class AppConfig {
         return new ShotFlowControl2(createAngleHandler(),   createVelocityHandler(),createLandingPosition(),createHitOrMiss(),createTarget());
     }
 
+    @Bean(name = "iMortar")
+    public Mortar createMortar(){
+        return new Mortar();
+    }
+
+
     @Bean(name = "iGameFlowControl")
     public GameFlowControl createGameFlowControl(){
-        return new GameFlowControl(createTarget(),createShotFlowControl2());
+        return new GameFlowControl(createTarget(),createShotFlowControl2(), createMortar());
     }
+
+
 
 
 }

@@ -2,10 +2,8 @@ package com.example.hangrybirdz;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.io.ByteArrayInputStream;
-import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
@@ -16,13 +14,17 @@ public class GameFlowControlTests {
     private IShotFlowControl2 shotFlowControl2;
     private IMortar mortar;
     private IGameFlowControl gameFlowControl;
+    private IHitOrMiss hitOrMissShot;
+    private IHitOrMiss hitOrMissMortar;
 
     @BeforeEach
     public void start() {
         target = mock(Target.class);
         shotFlowControl2 = mock(ShotFlowControl2.class);
         mortar = mock(Mortar.class);
-        gameFlowControl = new GameFlowControl(target, shotFlowControl2, mortar);
+        hitOrMissShot = mock(HitOrMissShot.class);
+        hitOrMissMortar = mock(HitOrMissMortar.class);
+        gameFlowControl = new GameFlowControl(target, shotFlowControl2, mortar, hitOrMissShot, hitOrMissMortar);
     }
 
 
@@ -31,7 +33,7 @@ public class GameFlowControlTests {
         // Given I am a user
 
         // When the game begins
-        when(shotFlowControl2.run()).thenReturn(true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
         gameFlowControl.run();
         // Then the game calls target.set() once
         verify(target, times(1)).Set();
@@ -42,7 +44,7 @@ public class GameFlowControlTests {
         // Given I am a user
 
         // When we get the target
-        when(shotFlowControl2.run()).thenReturn(true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
         gameFlowControl.run();
         // Then the game calls run() once
         verify(target, times(1)).Set();
@@ -53,17 +55,17 @@ public class GameFlowControlTests {
         // Given I am a user
 
         // When hit the first shot
-        when(shotFlowControl2.run()).thenReturn(true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
         gameFlowControl.run();
         // Then the game calls run() Once
-        verify(shotFlowControl2, times(1)).run();
+        verify(shotFlowControl2, times(1)).run(hitOrMissShot);
     }
 
     @Test
     public void Given4thShotHasBeenTakenIncreaseMortarByOne() {
         // Given: I am a user
         // When:  I have taken the 4th shot
-        when(shotFlowControl2.run()).thenReturn(false, false, false, false, true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(false, false, false, false, true);
         // Then: Increase the mortar by 1
         gameFlowControl.run();
         verify(mortar, times(1)).increment(1);
@@ -72,7 +74,7 @@ public class GameFlowControlTests {
     @Test
     public void GivenIUseAMortarDecreaseMortarByOne() {
 //      Given: I have a mortar and I get asked if I want use mortar
-        when(shotFlowControl2.run()).thenReturn(false, false, false, false, false, false, true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(false, false, false, false, false, false, true);
         when(mortar.getCount()).thenReturn(0,0,0,1,0,0);
 //      When: I say yes
         String input = "yes";

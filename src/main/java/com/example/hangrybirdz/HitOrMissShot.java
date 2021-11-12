@@ -1,6 +1,6 @@
 package com.example.hangrybirdz;
 
-public class HitOrMiss implements IHitOrMiss{
+public class HitOrMissShot implements IHitOrMiss{
 
 
     @Override

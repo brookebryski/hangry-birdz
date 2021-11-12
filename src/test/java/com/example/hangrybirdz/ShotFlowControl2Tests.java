@@ -19,20 +19,20 @@ public class ShotFlowControl2Tests {
         angleHandler = mock(AngleHandler.class);
         velocityHandler = mock(VelocityHandler.class);
         landingPosition = mock(LandingPosition.class);
-        hitOrMiss = mock(HitOrMiss.class);
+        hitOrMiss = mock(HitOrMissShot.class);
         target = mock(Target.class);
-        flow = new ShotFlowControl2(angleHandler,velocityHandler, landingPosition, hitOrMiss, target);
+        flow = new ShotFlowControl2(angleHandler,velocityHandler, landingPosition, target);
     }
 
     @Test
     public void GivenStartOfGameGetAngle() {
-        flow.run();
+        flow.run(hitOrMiss);
         verify(angleHandler, times(1)).getAngle();
     }
 
     @Test
     public void GivenAngleGetVelocity() {
-        flow.run();
+        flow.run(hitOrMiss);
         verify(velocityHandler, times(1)).getVelocity();
     }
 
@@ -40,7 +40,7 @@ public class ShotFlowControl2Tests {
     public void GivenAngleAndVelocityCalculateLandingOnce() {
         when(angleHandler.getAngle()).thenReturn(1);
         when(velocityHandler.getVelocity()).thenReturn(1);
-        flow.run();
+        flow.run(hitOrMiss);
         verify(landingPosition,times(1)).set(1,1);
     }
 
@@ -48,7 +48,7 @@ public class ShotFlowControl2Tests {
     public void GivenLandingRunHitOrMissOnce() {
         when(angleHandler.getAngle()).thenReturn(1);
         when(velocityHandler.getVelocity()).thenReturn(1);
-        flow.run();
+        flow.run(hitOrMiss);
         verify(hitOrMiss,times(1)).IsAHit(target,landingPosition);
     }
 

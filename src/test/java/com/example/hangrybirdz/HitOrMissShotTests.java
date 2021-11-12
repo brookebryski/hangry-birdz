@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class HitOrMissTests {
+public class HitOrMissShotTests {
 
     private ITarget target;
     private ILandingPosition landingPosition;
@@ -17,7 +17,7 @@ public class HitOrMissTests {
     public void startup() {
         target = mock(Target.class);
         landingPosition = mock(LandingPosition.class);
-        hitOrMiss = new HitOrMiss();
+        hitOrMiss = new HitOrMissShot();
         when(target.getxCoordinate()).thenReturn(1);
         when(target.getyCoordinate()).thenReturn(1);
     }

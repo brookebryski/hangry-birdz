@@ -71,14 +71,19 @@ public class AppConfig {
         return new Target();
     }
 
-    @Bean(name = "iHitOrMiss")
-    public HitOrMiss createHitOrMiss(){
-        return new HitOrMiss();
+    @Bean(name = "iHitOrMissShot")
+    public HitOrMissShot createHitOrMissShot(){
+        return new HitOrMissShot();
+    }
+
+    @Bean(name = "iHitOrMissMortar")
+    public HitOrMissMortar createHitOrMissMortar(){
+        return new HitOrMissMortar();
     }
 
     @Bean(name = "iShotFlowControl2")
     public ShotFlowControl2 createShotFlowControl2(){
-        return new ShotFlowControl2(createAngleHandler(),   createVelocityHandler(),createLandingPosition(),createHitOrMiss(),createTarget());
+        return new ShotFlowControl2(createAngleHandler(),createVelocityHandler(),createLandingPosition(),createTarget());
     }
 
     @Bean(name = "iMortar")
@@ -89,7 +94,7 @@ public class AppConfig {
 
     @Bean(name = "iGameFlowControl")
     public GameFlowControl createGameFlowControl(){
-        return new GameFlowControl(createTarget(),createShotFlowControl2(), createMortar());
+        return new GameFlowControl(createTarget(),createShotFlowControl2(), createMortar(), createHitOrMissShot(), createHitOrMissMortar());
     }
 
 

@@ -1,5 +1,7 @@
 package com.example.hangrybirdz;
 
+import java.util.Scanner;
+
 public class GameFlowControl implements IGameFlowControl {
 
     private ITarget _target;
@@ -11,7 +13,6 @@ public class GameFlowControl implements IGameFlowControl {
        this._target = target;
        this._shotFlowControl2 = shotFlowControl2;
        this._mortar = mortar;
-
     }
 
     public void run() {
@@ -21,6 +22,14 @@ public class GameFlowControl implements IGameFlowControl {
         System.out.println("You missed, try again");
         if(shotCounter == 4){
             _mortar.increment(1);
+        }
+        if(_mortar.getCount() > 0) {
+            System.out.println("Would you like to use a mortar?");
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.nextLine();
+            if (input.equals("yes")) {
+                _mortar.decrement(1);
+            }
         }
         shotCounter++;
         }

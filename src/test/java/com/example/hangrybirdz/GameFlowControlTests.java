@@ -13,18 +13,22 @@ public class GameFlowControlTests {
     private ITarget target;
     private IShotFlowControl2 shotFlowControl2;
     private IMortar mortar;
+    private IBomb bomb;
     private IGameFlowControl gameFlowControl;
     private IHitOrMiss hitOrMissShot;
     private IHitOrMiss hitOrMissMortar;
+    private IHitOrMiss hitOrMissBomb;
 
     @BeforeEach
     public void start() {
         target = mock(Target.class);
         shotFlowControl2 = mock(ShotFlowControl2.class);
         mortar = mock(Mortar.class);
+        bomb = mock(Bomb.class);
         hitOrMissShot = mock(HitOrMissShot.class);
         hitOrMissMortar = mock(HitOrMissMortar.class);
-        gameFlowControl = new GameFlowControl(target, shotFlowControl2, mortar, hitOrMissShot, hitOrMissMortar);
+        hitOrMissBomb = mock(HitOrMissBomb.class);
+        gameFlowControl = new GameFlowControl(target, shotFlowControl2, mortar, bomb, hitOrMissShot, hitOrMissMortar,hitOrMissBomb);
     }
 
 

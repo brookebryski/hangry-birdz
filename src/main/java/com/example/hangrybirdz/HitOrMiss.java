@@ -7,7 +7,5 @@ public class HitOrMiss implements IHitOrMiss{
     public boolean IsAHit(ITarget target, ILandingPosition landingPosition) {
         return (target.getxCoordinate() == landingPosition.getxCoordinate() &&
                 target.getyCoordinate() == landingPosition.getyCoordinate());
-
     }
-
 }

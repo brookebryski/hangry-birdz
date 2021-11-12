@@ -50,7 +50,6 @@ public class ShotFlowControl2Tests {
         when(velocityHandler.getVelocity()).thenReturn(1);
         flow.run();
         verify(hitOrMiss,times(1)).IsAHit(target,landingPosition);
-
     }
 
 }

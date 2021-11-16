@@ -1,10 +1,11 @@
 package com.example.hangrybirdz.userSessions;
 
 public class userController {
-    public void create() {
+    public void create(String username, int score) {
         System.out.println("create boi");
     }
-    public void read(String username) {
+    public boolean read(String username) {
         System.out.println("read boi");
+        return true;
     }
 }

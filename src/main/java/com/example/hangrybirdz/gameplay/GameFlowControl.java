@@ -10,7 +10,7 @@ public class GameFlowControl implements IGameFlowControl {
     private IShotFlowControl2 _shotFlowControl2;
     private IMortar _mortar;
     private IBomb _bomb;
-    private int shotCounter = 1;
+    private int shotCounter = 0;
     private IHitOrMiss _hitOrMissShot;
     private IHitOrMiss _hitOrMissMortar;
     private IHitOrMiss _hitOrMissBomb;

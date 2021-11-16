@@ -18,6 +18,11 @@ public class User implements IUser {
             _existingUser = false;
         }
     }
+//Comment to test feature branch
+    public void print() {
+        System.out.println("print statement here");
+    }
+
 
     public void save(int score){
         _userController.create(_username, score);

@@ -1,2 +1,5 @@
-package com.example.hangrybirdz.userSessions;public interface ISessionFlowControl {
+package com.example.hangrybirdz.userSessions;
+
+public interface ISessionFlowControl {
+    void run();
 }

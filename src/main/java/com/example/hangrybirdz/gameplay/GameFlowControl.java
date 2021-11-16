@@ -28,7 +28,7 @@ public class GameFlowControl implements IGameFlowControl {
         this._hitOrMissBomb = hitOrMissBomb;
     }
 
-    public void run() {
+    public int run() {
         _target.Set();
         System.out.println("The target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
         while (isGameRunning) {
@@ -41,6 +41,7 @@ public class GameFlowControl implements IGameFlowControl {
             }
         }
         System.out.println("You won the game with " + shotCounter + " shots.");
+        return shotCounter;
     }
 
     private boolean useMortar() {

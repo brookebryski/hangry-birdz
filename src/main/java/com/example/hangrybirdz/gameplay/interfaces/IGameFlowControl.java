@@ -2,5 +2,5 @@ package com.example.hangrybirdz.gameplay.interfaces;
 
 public interface IGameFlowControl {
 
-     void run();
+     int run();
 }

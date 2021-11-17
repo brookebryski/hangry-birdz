@@ -8,10 +8,9 @@ public class Stats implements IStats {
     private final IUser _user;
     private int _worstScore;
     private int _highScore;
-    private double _totalGamesPlayed;
-    private double _totalShotsTaken;
+    private int _totalGamesPlayed;
+    private int _totalShotsTaken;
     private double _averageScore;
-
 
     public Stats(IUserController userController, IUser user) {
         this._userController = userController;
@@ -37,11 +36,12 @@ public class Stats implements IStats {
                 _totalGamesPlayed++;
                 _totalShotsTaken = _totalShotsTaken + currentScore;
             }
-            _averageScore = _totalShotsTaken / _totalGamesPlayed;
-            System.out.println(_user.getUsername() + "Your current stats are: ");
+            _averageScore = (double) _totalShotsTaken / _totalGamesPlayed;
+            System.out.println("Username: " + _user.getUsername());
+            System.out.println("Your current stats are: ");
             System.out.println("Total games played : " + _totalGamesPlayed);
             System.out.println("Total shots taken: " + _totalShotsTaken);
-            System.out.println("Average Score: " + _averageScore);
+            System.out.println("Average Score: " + (double)Math.round(_averageScore * 10d)/ 10d);
             System.out.println("High Score : " + _highScore);
             System.out.println("Low Score: " + _worstScore);
         } else {

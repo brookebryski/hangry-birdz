@@ -16,16 +16,22 @@ public class SessionFlowControlTests {
     private IStats stats;
     private ISessionFlowControl sessionFlowControl;
     private IGameFlowControl gameFlowControl;
+    private IContinuePlaying continuePlaying;
     private String input;
+    private ByteArrayInputStream in;
 
     @BeforeEach
     public void setup() {
         user = mock(User.class);
         stats = mock(Stats.class);
         gameFlowControl = mock(GameFlowControl.class);
-        sessionFlowControl = new SessionFlowControl(user, stats, gameFlowControl);
-         input = "dustin";
+        continuePlaying = mock(ContinuePlaying.class);
+        sessionFlowControl = new SessionFlowControl(user, stats, gameFlowControl, continuePlaying);
+        input = "dustin";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
+        when(continuePlaying.keepPlaying()).thenReturn(false);
+
+
     }
 
     @Test
@@ -38,12 +44,12 @@ public class SessionFlowControlTests {
     }
 
     @Test
-    public void GivenGameStartsCallGetStatsOnce() {
+    public void GivenGameStartsCallGetStatsAtLeaseOnce() {
         // Given I am a user
         // When I start a game
         // Then I call stats.getStats() once
         sessionFlowControl.run();
-        verify(stats, times(1)).getStats(user);
+        verify(stats, atLeast(1)).getStats();
     }
 
     @Test
@@ -71,9 +77,16 @@ public class SessionFlowControlTests {
         // When I stop playing the same
         // Then sessionInProgress is false
         when(gameFlowControl.run()).thenReturn(5);
-        String keepPlaying = "no";
-        System.setIn(new ByteArrayInputStream(keepPlaying.getBytes()));
         sessionFlowControl.run();
         verify(gameFlowControl, times(1)).run();
+    }
+
+    @Test
+    public void GivenGameEndsAfterOneRoundGetStatsCalledTwice() {
+        // Given I am a user
+        // When I stop playing after one round
+        // Then I call stats.getStats() a second time.
+        sessionFlowControl.run();
+        verify(stats, times(2)).getStats();
     }
 }

@@ -1,28 +1,23 @@
 package com.example.hangrybirdz.userSessions;
 
 public class User implements IUser {
-    private userController _userController;
+    private IUserController _userController;
     private boolean _existingUser;
     private String _username;
 
-    public User(userController userController) {
+    public User(IUserController userController) {
         _userController = userController;
     }
 
 
     public void initialize(String username){
         this._username = username;
-        if(_userController.read(username)) {
+        if(_userController.readUser(username)) {
             _existingUser = true;
         } else {
             _existingUser = false;
         }
     }
-//Comment to test feature branch
-    public void print() {
-        System.out.println("print statement here");
-    }
-
 
     public void save(int score){
         _userController.create(_username, score);

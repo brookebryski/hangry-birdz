@@ -1,5 +1,6 @@
 package com.example.hangrybirdz.gameplay;
 
+import com.example.hangrybirdz.gameplay.levels.Level;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -101,9 +102,14 @@ public class AppConfig {
         return new Bomb();
     }
 
+    @Bean(name = "iLevel")
+    public Level createLevel() {
+        return new Level(createTarget(), createMortar());
+    }
+
     @Bean(name = "iGameFlowControl")
     public GameFlowControl createGameFlowControl(){
-        return new GameFlowControl(createTarget(),createShotFlowControl2(), createMortar(), createBomb(), createHitOrMissShot(), createHitOrMissMortar(), createHitOrMissBomb());
+        return new GameFlowControl(createLevel(), createTarget(),createShotFlowControl2(), createMortar(), createBomb(), createHitOrMissShot(), createHitOrMissMortar(), createHitOrMissBomb());
     }
 
 

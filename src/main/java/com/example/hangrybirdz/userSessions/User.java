@@ -7,7 +7,6 @@ public class User implements IUser {
         _userController = userController;
     }
 
-
     public void initialize(String username){
         _userController.read(username);
     }

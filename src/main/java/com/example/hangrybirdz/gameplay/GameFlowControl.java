@@ -1,6 +1,8 @@
 package com.example.hangrybirdz.gameplay;
 
 import com.example.hangrybirdz.gameplay.interfaces.*;
+import com.example.hangrybirdz.gameplay.levels.ILevel;
+import com.example.hangrybirdz.gameplay.levels.Level;
 
 import java.util.Scanner;
 
@@ -10,6 +12,7 @@ public class GameFlowControl implements IGameFlowControl {
     private IShotFlowControl2 _shotFlowControl2;
     private IMortar _mortar;
     private IBomb _bomb;
+    private ILevel _level;
     private int shotCounter = 1;
     private IHitOrMiss _hitOrMissShot;
     private IHitOrMiss _hitOrMissMortar;
@@ -18,7 +21,7 @@ public class GameFlowControl implements IGameFlowControl {
     private boolean isAHit = false;
 
 
-    public GameFlowControl(ITarget target, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
+    public GameFlowControl(ILevel level, ITarget target, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
         this._target = target;
         this._shotFlowControl2 = shotFlowControl2;
         this._mortar = mortar;
@@ -26,6 +29,7 @@ public class GameFlowControl implements IGameFlowControl {
         this._hitOrMissShot = hitOrMissShot;
         this._hitOrMissMortar = hitOrMissMortar;
         this._hitOrMissBomb = hitOrMissBomb;
+        this._level = level;
     }
 
     public void run() {
@@ -36,7 +40,7 @@ public class GameFlowControl implements IGameFlowControl {
                 isGameRunning = false;
             } else {
                 System.out.println("You missed, try again");
-                shotCounter++;
+                shotCounter--;
                 AddToInventory();
             }
         }

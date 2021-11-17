@@ -2,6 +2,8 @@ package com.example.hangrybirdz.gameplay;
 
 import com.example.hangrybirdz.gameplay.*;
 import com.example.hangrybirdz.gameplay.interfaces.*;
+import com.example.hangrybirdz.gameplay.levels.ILevel;
+import com.example.hangrybirdz.gameplay.levels.Level;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +22,11 @@ public class GameFlowControlTests {
     private IHitOrMiss hitOrMissShot;
     private IHitOrMiss hitOrMissMortar;
     private IHitOrMiss hitOrMissBomb;
+    private ILevel level;
 
     @BeforeEach
     public void start() {
+        level = mock(Level.class);
         target = mock(Target.class);
         shotFlowControl2 = mock(ShotFlowControl2.class);
         mortar = mock(Mortar.class);
@@ -30,7 +34,7 @@ public class GameFlowControlTests {
         hitOrMissShot = mock(HitOrMissShot.class);
         hitOrMissMortar = mock(HitOrMissMortar.class);
         hitOrMissBomb = mock(HitOrMissBomb.class);
-        gameFlowControl = new GameFlowControl(target, shotFlowControl2, mortar, bomb, hitOrMissShot, hitOrMissMortar,hitOrMissBomb);
+        gameFlowControl = new GameFlowControl(level,target, shotFlowControl2, mortar, bomb, hitOrMissShot, hitOrMissMortar,hitOrMissBomb);
     }
 
 

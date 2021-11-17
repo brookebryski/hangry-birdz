@@ -4,6 +4,8 @@ import com.example.hangrybirdz.gameplay.interfaces.*;
 import com.example.hangrybirdz.gameplay.levels.ILevel;
 import com.example.hangrybirdz.gameplay.levels.Level;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class GameFlowControl implements IGameFlowControl {
@@ -13,12 +15,14 @@ public class GameFlowControl implements IGameFlowControl {
     private IMortar _mortar;
     private IBomb _bomb;
     private ILevel _level;
-    private int shotCounter = 1;
+    private int shotCounter = 0;
+    private int levelShotCounter = 0;
     private IHitOrMiss _hitOrMissShot;
     private IHitOrMiss _hitOrMissMortar;
     private IHitOrMiss _hitOrMissBomb;
     private boolean isGameRunning = true;
     private boolean isAHit = false;
+    private int levelCounter = 1;
 
 
     public GameFlowControl(ILevel level, ITarget target, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
@@ -37,14 +41,20 @@ public class GameFlowControl implements IGameFlowControl {
         System.out.println("The target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
         while (isGameRunning) {
             if (ShotISAHit()) {
+                System.out.println("You won the game with " + (levelShotCounter + 1) + " shots.");
+//                System.out.println("Would you like to play the next level");
+                isGameRunning = false;
+            } else if(levelShotCounter == 6) {
+                System.out.println("You have fired all your shots, you lose");
                 isGameRunning = false;
             } else {
                 System.out.println("You missed, try again");
-                shotCounter--;
-                AddToInventory();
+                shotCounter++;
+                levelShotCounter++;
+//                AddToInventory();
             }
         }
-        System.out.println("You won the game with " + shotCounter + " shots.");
+
     }
 
     private boolean useMortar() {
@@ -91,4 +101,5 @@ public class GameFlowControl implements IGameFlowControl {
             _bomb.increment(1);
         }
     }
+
 }

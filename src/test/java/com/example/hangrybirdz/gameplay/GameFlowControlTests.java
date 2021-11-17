@@ -71,15 +71,15 @@ public class GameFlowControlTests {
         verify(shotFlowControl2, times(1)).run(hitOrMissShot);
     }
 
-    @Test
-    public void Given4thShotHasBeenTakenIncreaseMortarByOne() {
-        // Given: I am a user
-        // When:  I have taken the 4th shot
-        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(false, false, false, false, true);
-        // Then: Increase the mortar by 1
-        gameFlowControl.run();
-        verify(mortar, times(1)).increment(1);
-    }
+//    @Test
+//    public void Given4thShotHasBeenTakenIncreaseMortarByOne() {
+//        // Given: I am a user
+//        // When:  I have taken the 4th shot
+//        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(false, false, false, false, true);
+//        // Then: Increase the mortar by 1
+//        gameFlowControl.run();
+//        verify(mortar, times(1)).increment(1);
+//    }
 
     @Test
     public void GivenIUseAMortarDecreaseMortarByOne() {
@@ -92,6 +92,20 @@ public class GameFlowControlTests {
         gameFlowControl.run();
         verify(mortar, times(1)).decrement(1);
 //      Then:  Decrease the mortar by 1
+    }
+
+    @Test
+    void startGameWithSevenShots() {
+        // given: I am a user
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(false, false, false, false, false, false, false, true);
+        int expectedMaxShots = 7;
+
+        // when: I start a level
+        gameFlowControl.run();
+
+
+        // then: I have max 7 shots
+        verify(shotFlowControl2, times(7)).run(hitOrMissShot);
     }
 
 //      Given: I am going to shoot a mortar

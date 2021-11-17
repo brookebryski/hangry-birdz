@@ -14,5 +14,4 @@ public class Main {
         ISessionFlowControl flow = (ISessionFlowControl) context.getBean("iSessionFlowControl");
         flow.run();
     }
-
 }

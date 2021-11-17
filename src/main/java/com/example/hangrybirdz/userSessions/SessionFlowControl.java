@@ -2,6 +2,7 @@ package com.example.hangrybirdz.userSessions;
 
 import com.example.hangrybirdz.gameplay.interfaces.IGameFlowControl;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class SessionFlowControl implements ISessionFlowControl{
@@ -21,6 +22,22 @@ public class SessionFlowControl implements ISessionFlowControl{
 
     @Override
     public void run() {
+        _user.initialize(getCurrentUser());
+        while(_sessionInProgress) {
+            printStats();
+            int score =  _gameFlowControl.run();
+            _user.save(score);
+            if(_continuePlaying.keepPlaying()) {
+                continue;
+            } else {
+                _sessionInProgress = false;
+            }
+        }
+        printStats();
+        System.out.println("Thank you for playing");
+    }
+
+    private String getCurrentUser() {
         System.out.println("Hello, please enter a username");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
@@ -28,19 +45,19 @@ public class SessionFlowControl implements ISessionFlowControl{
             System.out.println("You must enter a username to play");
             input = scanner.nextLine();
         }
-        _user.initialize(input);
-        while(_sessionInProgress) {
-            _stats.getStats();
-            int score =  _gameFlowControl.run();
-            _user.save(score);
+        return input;
+    }
 
-            if(_continuePlaying.keepPlaying()) {
-                continue;
-            } else {
-                _sessionInProgress = false;
-            }
-        }
-        _stats.getStats();
-        System.out.println("Thank you for playing");
+    private void printStats() {
+        if (_user.isExistingUser()) {
+            HashMap stats = _stats.getStatsAsHashMap();
+            System.out.println("Username: " + _user.getUsername());
+            System.out.println("Your current stats are: ");
+            System.out.println("Total games played : " + stats.get("totalGamesPlayed"));
+            System.out.println("Total shots taken: " + stats.get("totalShotsTaken"));
+            System.out.println("Average Score: " + stats.get("averageScore"));
+            System.out.println("High Score : " + stats.get("highScore"));
+            System.out.println("Low Score: " + stats.get("worstScore"));
+        } else System.out.println("You must play a game first");
     }
 }

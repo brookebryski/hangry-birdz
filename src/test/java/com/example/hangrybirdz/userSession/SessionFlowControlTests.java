@@ -49,7 +49,7 @@ public class SessionFlowControlTests {
         // When I start a game
         // Then I call stats.getStats() once
         sessionFlowControl.run();
-        verify(stats, atLeast(1)).getStats();
+        verify(stats, atLeast(1)).getStatsAsHashMap();
     }
 
     @Test
@@ -87,6 +87,6 @@ public class SessionFlowControlTests {
         // When I stop playing after one round
         // Then I call stats.getStats() a second time.
         sessionFlowControl.run();
-        verify(stats, times(2)).getStats();
+        verify(stats, times(2)).getStatsAsHashMap();
     }
 }

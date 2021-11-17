@@ -24,6 +24,10 @@ public class SessionFlowControl implements ISessionFlowControl{
         System.out.println("Hello, please enter a username");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
+        while (input.equals("")) {
+            System.out.println("You must enter a username to play");
+            input = scanner.nextLine();
+        }
         _user.initialize(input);
         while(_sessionInProgress) {
             _stats.getStats();

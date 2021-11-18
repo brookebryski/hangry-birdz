@@ -53,17 +53,20 @@ public class GameFlowControl implements IGameFlowControl {
             System.out.println("Your target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
         }
         while (isGameRunning) {
-            if (ShotISAHit() && targets.stream().allMatch(target -> target.getTargetTracker() == true)) {
-                if(levelCounter == 2){
-                    isGameRunning = false;
+            if (ShotISAHit()) {
+
+                if(targets.stream().allMatch(target -> target.getTargetTracker() == true)) {
+                    if(levelCounter == 2){
+                        gameOver();
+                    }
+                    System.out.println("Would you like to play the next level");
+                    levelCounter++;
                 }
-                levelCounter++;
-                System.out.println("Would you like to play the next level");
 
 //               isGameRunning = false;
             } else if(levelShotCounter == 6) {
                 System.out.println("You have fired all your shots, you lose");
-                isGameRunning = false;
+                gameOver();
             } else {
                 shotCounter++;
                 levelShotCounter++;

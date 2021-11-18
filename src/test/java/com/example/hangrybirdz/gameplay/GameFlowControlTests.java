@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -132,13 +133,17 @@ public class GameFlowControlTests {
     @Test
     void iHave3TargetsAndHitThemAll() {
         //Given: I am a user
-        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
         when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true,true,true);
+        when(target.getTargetTracker()).thenReturn(true);
+        when(target.getTargetTracker()).thenReturn(true);
+        when(target2.getTargetTracker()).thenReturn(true);
+
         //when: I have two targets
         gameFlowControl.run();
+
         //Then: Call shotfllowcontrol
-        assertFalse(gameFlowControl.isGameRunning);
-        verify(shotFlowControl2, times(7)).run(hitOrMissShot);
+        assertFalse(gameFlowControl.gameOver());
+
     }
 
     // Given: I am going to shoot a mortar

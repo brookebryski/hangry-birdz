@@ -6,12 +6,12 @@ import com.example.hangrybirdz.gameplay.interfaces.ITarget;
 
 public class HitOrMissMortar implements IHitOrMiss {
     @Override
-    public boolean IsAHit(ITarget target, ILandingPosition landingPosition) {
-        return onPoint(target, landingPosition) ||
-                oneBelowTarget(target, landingPosition) ||
-                oneLeftOfTarget(target, landingPosition) ||
-                oneAboveTarget(target, landingPosition) ||
-                oneRightOfTarget(target, landingPosition);
+    public boolean IsAHit(ITarget target, ITarget target2, ILandingPosition landingPosition) {
+        return onPoint(target,target2, landingPosition) ||
+                oneBelowTarget(target,target2, landingPosition) ||
+                oneLeftOfTarget(target,target2, landingPosition) ||
+                oneAboveTarget(target, target2, landingPosition) ||
+                oneRightOfTarget(target, target2, landingPosition);
     }
     private boolean onPoint(ITarget target, ILandingPosition landingPosition){
         return (target.getxCoordinate() == landingPosition.getxCoordinate() &&

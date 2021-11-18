@@ -8,8 +8,8 @@ public class HitOrMissShot implements IHitOrMiss {
 
 
     @Override
-    public boolean IsAHit(ITarget target, ILandingPosition landingPosition) {
-        if((target.getxCoordinate() == landingPosition.getxCoordinate() &&
+    public boolean IsAHit(ITarget target, ITarget target2, ILandingPosition landingPosition) {
+        if ((target.getxCoordinate() == landingPosition.getxCoordinate() &&
                 target.getyCoordinate() == landingPosition.getyCoordinate())) {
 
             target.setTargetTracker(true);

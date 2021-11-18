@@ -94,7 +94,7 @@ public class AppConfig {
 
     @Bean(name = "iShotFlowControl2")
     public ShotFlowControl2 createShotFlowControl2(){
-        return new ShotFlowControl2(createAngleHandler(),createVelocityHandler(),createLandingPosition(),createTarget());
+        return new ShotFlowControl2(createAngleHandler(),createVelocityHandler(),createLandingPosition(),createTarget(), createTarget2());
     }
 
     @Bean(name = "iMortar")

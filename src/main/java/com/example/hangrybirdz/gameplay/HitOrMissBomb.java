@@ -8,7 +8,7 @@ public class HitOrMissBomb implements IHitOrMiss {
 
 
     @Override
-    public boolean IsAHit(ITarget target, ILandingPosition landingPosition) {
+    public boolean IsAHit(ITarget target, ITarget target2, ILandingPosition landingPosition) {
         return true;
     }
 }

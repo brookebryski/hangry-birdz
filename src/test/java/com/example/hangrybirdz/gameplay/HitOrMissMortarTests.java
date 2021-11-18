@@ -14,12 +14,14 @@ import static org.mockito.Mockito.when;
 
 public class HitOrMissMortarTests {
     private ITarget target;
+    private ITarget target2;
     private ILandingPosition landingPosition;
     private IHitOrMiss hitOrMiss;
 
     @BeforeEach
     public void startup() {
         target = mock(Target.class);
+        target2 = mock(Target.class);
         landingPosition = mock(LandingPosition.class);
         hitOrMiss = new HitOrMissMortar();
     }
@@ -32,7 +34,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(5);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back true
         assertTrue(hit);
     }
@@ -44,7 +46,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(4);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back true
         assertTrue(hit);
     }
@@ -57,7 +59,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(5);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back true
         assertTrue(hit);
     }
@@ -70,7 +72,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(6);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back true
         assertTrue(hit);
     }
@@ -83,7 +85,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(5);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back true
         assertTrue(hit);
     }
@@ -96,7 +98,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(4);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back false
         assertFalse(hit);
     }
@@ -109,7 +111,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(6);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back false
         assertFalse(hit);
     }
@@ -122,7 +124,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(6);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back false
         assertFalse(hit);
     }
@@ -135,7 +137,7 @@ public class HitOrMissMortarTests {
         when(target.getyCoordinate()).thenReturn(4);
         when(landingPosition.getxCoordinate()).thenReturn(5);
         when(landingPosition.getyCoordinate()).thenReturn(5);
-        boolean hit = hitOrMiss.IsAHit(target,landingPosition);
+        boolean hit = hitOrMiss.IsAHit(target,target2,landingPosition);
         //Then: I get back false
         assertFalse(hit);
     }

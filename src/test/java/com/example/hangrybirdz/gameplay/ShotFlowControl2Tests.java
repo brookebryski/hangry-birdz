@@ -15,6 +15,7 @@ public class ShotFlowControl2Tests {
     private ILandingPosition landingPosition;
     private IHitOrMiss hitOrMiss;
     private ITarget target;
+    private ITarget target2;
 
     @BeforeEach
     public void Startup() {
@@ -23,7 +24,8 @@ public class ShotFlowControl2Tests {
         landingPosition = mock(LandingPosition.class);
         hitOrMiss = mock(HitOrMissShot.class);
         target = mock(Target.class);
-        flow = new ShotFlowControl2(angleHandler,velocityHandler, landingPosition, target);
+        target2 = mock(Target.class);
+        flow = new ShotFlowControl2(angleHandler,velocityHandler, landingPosition, target, target2);
     }
 
     @Test
@@ -51,7 +53,7 @@ public class ShotFlowControl2Tests {
         when(angleHandler.getAngle()).thenReturn(1);
         when(velocityHandler.getVelocity()).thenReturn(1);
         flow.run(hitOrMiss);
-        verify(hitOrMiss,times(1)).IsAHit(target,landingPosition);
+        verify(hitOrMiss,times(1)).IsAHit(target,target2,landingPosition);
     }
 
 }

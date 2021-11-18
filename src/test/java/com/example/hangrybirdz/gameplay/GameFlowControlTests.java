@@ -129,7 +129,17 @@ public class GameFlowControlTests {
         verify(shotFlowControl2, times(8)).run(hitOrMissShot);
 
     }
-
+    @Test
+    void iHave3TargetsAndHitThemAll() {
+        //Given: I am a user
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true,true,true);
+        //when: I have two targets
+        gameFlowControl.run();
+        //Then: Call shotfllowcontrol
+        assertFalse(gameFlowControl.isGameRunning);
+        verify(shotFlowControl2, times(7)).run(hitOrMissShot);
+    }
 
     // Given: I am going to shoot a mortar
 //      When: I take a shot

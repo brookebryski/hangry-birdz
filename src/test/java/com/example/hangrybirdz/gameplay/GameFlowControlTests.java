@@ -15,6 +15,7 @@ import static org.mockito.Mockito.*;
 public class GameFlowControlTests {
 
     private ITarget target;
+    private ITarget target2;
     private IShotFlowControl2 shotFlowControl2;
     private IMortar mortar;
     private IBomb bomb;
@@ -28,6 +29,7 @@ public class GameFlowControlTests {
     public void start() {
         level = mock(Level.class);
         target = mock(Target.class);
+        target2 = mock(Target.class);
         shotFlowControl2 = mock(ShotFlowControl2.class);
         mortar = mock(Mortar.class);
         bomb = mock(Bomb.class);

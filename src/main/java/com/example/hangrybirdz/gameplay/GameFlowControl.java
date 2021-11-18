@@ -26,7 +26,7 @@ public class GameFlowControl implements IGameFlowControl {
     private int levelCounter = 1;
 
 
-    public GameFlowControl(ILevel level, ITarget target, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
+    public GameFlowControl(ILevel level, ITarget target, ITarget target2, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
         this._target = target;
         this._target2 = target2;
         this._shotFlowControl2 = shotFlowControl2;
@@ -59,6 +59,16 @@ public class GameFlowControl implements IGameFlowControl {
                 shotCounter++;
                 levelShotCounter++;
 //                AddToInventory();
+            }
+            if (levelCounter == 2 && hiddenLevelCounter == 1) {
+                hiddenLevelCounter++;
+                _target.Set();
+                _target2.Set();
+                levelShotCounter = 0;
+                _mortar.increment(1);
+                System.out.println("You are in level 2");
+                System.out.println("Your new targets are located at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate() + "and X " + _target2.getxCoordinate() + " ,Y " + _target2.getyCoordinate());
+                isGameRunning = false;
             }
         }
 

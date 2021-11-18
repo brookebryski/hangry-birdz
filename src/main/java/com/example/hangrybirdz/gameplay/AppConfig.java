@@ -72,6 +72,11 @@ public class AppConfig {
         return new Target();
     }
 
+    @Bean(name = "iTarget2")
+    public Target createTarget2(){
+        return new Target();
+    }
+
     @Bean(name = "iHitOrMissShot")
     public HitOrMissShot createHitOrMissShot(){
         return new HitOrMissShot();
@@ -109,7 +114,7 @@ public class AppConfig {
 
     @Bean(name = "iGameFlowControl")
     public GameFlowControl createGameFlowControl(){
-        return new GameFlowControl(createLevel(), createTarget(),createShotFlowControl2(), createMortar(), createBomb(), createHitOrMissShot(), createHitOrMissMortar(), createHitOrMissBomb());
+        return new GameFlowControl(createLevel(), createTarget(), createTarget2(), createShotFlowControl2(), createMortar(), createBomb(), createHitOrMissShot(), createHitOrMissMortar(), createHitOrMissBomb());
     }
 
 

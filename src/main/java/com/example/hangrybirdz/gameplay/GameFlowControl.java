@@ -36,7 +36,9 @@ public class GameFlowControl implements IGameFlowControl {
         this._level = level;
     }
 
+
     public void run() {
+        int hiddenLevelCounter = 1;
         _target.Set();
         System.out.println("The target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
         while (isGameRunning) {

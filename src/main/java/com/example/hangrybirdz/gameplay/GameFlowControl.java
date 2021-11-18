@@ -58,8 +58,9 @@ public class GameFlowControl implements IGameFlowControl {
                     isGameRunning = false;
                 }
                 levelCounter++;
-//                System.out.println("Would you like to play the next level");
- //               isGameRunning = false;
+                System.out.println("Would you like to play the next level");
+
+//               isGameRunning = false;
             } else if(levelShotCounter == 6) {
                 System.out.println("You have fired all your shots, you lose");
                 isGameRunning = false;
@@ -122,11 +123,8 @@ public class GameFlowControl implements IGameFlowControl {
     }
 
     private void AddToInventory() {
-        if (shotCounter == 4) {
+        if (levelCounter == 2) {
             _mortar.increment(1);
-        }
-        if (shotCounter == 10) {
-            _bomb.increment(1);
         }
     }
 

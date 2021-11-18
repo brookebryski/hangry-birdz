@@ -34,7 +34,7 @@ public class GameFlowControlTests {
         hitOrMissShot = mock(HitOrMissShot.class);
         hitOrMissMortar = mock(HitOrMissMortar.class);
         hitOrMissBomb = mock(HitOrMissBomb.class);
-        gameFlowControl = new GameFlowControl(level,target, shotFlowControl2, mortar, bomb, hitOrMissShot, hitOrMissMortar,hitOrMissBomb);
+        gameFlowControl = new GameFlowControl(level,target, target2, shotFlowControl2, mortar, bomb, hitOrMissShot, hitOrMissMortar,hitOrMissBomb);
     }
 
 
@@ -107,8 +107,29 @@ public class GameFlowControlTests {
         // then: I have max 7 shots
         verify(shotFlowControl2, times(7)).run(hitOrMissShot);
     }
+    @Test
+    void startLevel2Have2Targets() {
+        //Given: I am a user
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true);
+        //When: I start level 2
+        gameFlowControl.run();
+        //Then: I have two targets
+        verify(target, times(2)).Set();
+        verify(target2,times(1)).Set();
+    }
+    @Test
+    void startLevel2Have7ShotsLeft() {
+        //Given: I am a user
+        when(shotFlowControl2.run(hitOrMissShot)).thenReturn(true, false, false, false, false, false, false, false, true);
+        //When: I start level 2
+        gameFlowControl.run();
+        //Then: I have 7 shots left
+        verify(shotFlowControl2, times(8)).run(hitOrMissShot);
 
-//      Given: I am going to shoot a mortar
+    }
+
+
+    // Given: I am going to shoot a mortar
 //      When: I take a shot
 //      Then: ShotFlowControl.TakeShot(mortar=True) called once
 }

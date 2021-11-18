@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class GameFlowControl implements IGameFlowControl {
 
     private ITarget _target;
+    private ITarget _target2;
     private IShotFlowControl2 _shotFlowControl2;
     private IMortar _mortar;
     private IBomb _bomb;
@@ -27,6 +28,7 @@ public class GameFlowControl implements IGameFlowControl {
 
     public GameFlowControl(ILevel level, ITarget target, IShotFlowControl2 shotFlowControl2, IMortar mortar, IBomb bomb, IHitOrMiss hitOrMissShot, IHitOrMiss hitOrMissMortar, IHitOrMiss hitOrMissBomb) {
         this._target = target;
+        this._target2 = target2;
         this._shotFlowControl2 = shotFlowControl2;
         this._mortar = mortar;
         this._bomb = bomb;
@@ -40,12 +42,15 @@ public class GameFlowControl implements IGameFlowControl {
     public void run() {
         int hiddenLevelCounter = 1;
         _target.Set();
-        System.out.println("The target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
+        if(levelCounter == 1){
+            System.out.println("You are on level 1");
+            System.out.println("and your target is at X " + _target.getxCoordinate() + " ,Y " + _target.getyCoordinate());
+        }
         while (isGameRunning) {
             if (ShotISAHit()) {
-                System.out.println("You won the game with " + (levelShotCounter + 1) + " shots.");
+                levelCounter++;
 //                System.out.println("Would you like to play the next level");
-                isGameRunning = false;
+ //               isGameRunning = false;
             } else if(levelShotCounter == 6) {
                 System.out.println("You have fired all your shots, you lose");
                 isGameRunning = false;

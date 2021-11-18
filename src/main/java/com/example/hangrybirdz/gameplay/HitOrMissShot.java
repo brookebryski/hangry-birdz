@@ -16,7 +16,11 @@ public class HitOrMissShot implements IHitOrMiss {
             return true;
 
         }
+        if ((target2.getxCoordinate() == landingPosition.getxCoordinate() && target2.getyCoordinate() == landingPosition.getyCoordinate())) {
 
+                target2.setTargetTracker(true);
+                return true;
+        }
         return false;
     }
 }

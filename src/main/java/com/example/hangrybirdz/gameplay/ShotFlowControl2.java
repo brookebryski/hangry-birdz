@@ -15,6 +15,7 @@ public class ShotFlowControl2 implements IShotFlowControl2 {
         this._velocityHandler = velocityHandler;
         this.landingPosition = landingPosition;
         this.target = target;
+        this.target2 = target2;
     }
 
     @Override
